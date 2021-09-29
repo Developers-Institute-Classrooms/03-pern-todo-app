@@ -1,0 +1,40 @@
+version: '3'
+services: 
+    client: 
+        build: 
+            context: ./client
+        ports: 
+            - '3333:3000'
+        environment: 
+            - REACT_APP_API_URL=http://localhost:5001/api
+        depends_on: 
+            - server
+        volumes:
+            - ./client:/app/
+            - /app/node_modules
+    server: 
+        image: server
+        build: 
+            context: ./server
+        ports: 
+            - '5001:5000'
+        environment: 
+            - PGDATABASE=postgres
+            - PGHOST=db 
+            - PGUSER=postgres
+            - PGPASSWORD=password
+            - PGPORT=5432
+        depends_on: 
+            - db
+        volumes: 
+            - ./server:/app
+            - /app/node_modules
+    db: 
+        build: 
+            context: ./db
+        volumes: 
+            - todo-volume:/var/lib/postgresql/data
+        ports:
+            - '5433:5432'
+volumes: 
+    todo-volume:
