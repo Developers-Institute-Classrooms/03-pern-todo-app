@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "start:dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watchAll --forceExit"
   },
   "author": "henry",
   "license": "ISC",
@@ -14,9 +14,29 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "jest-html-reporter": "^3.4.1",
+    "jest-html-reporters": "^2.1.6",
     "pg": "^8.4.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "jest": "^27.2.4",
+    "nodemon": "^2.0.12",
+    "supertest": "^6.1.6"
+  },
+  "jest-html-reporter": {
+    "pageTitle": "Unit Tests",
+    "outputPath": "./test-report.html",
+    "includeFailureMsg": true
+  },
+  "jest": {
+    "reporters": [
+      "default",
+      [
+        "./node_modules/jest-html-reporter",
+        {
+          "pageTitle": "Test Report"
+        }
+      ]
+    ]
   }
 }

@@ -27,3 +27,9 @@ docker-compose up
 ```
 
 The app will be running on `http://localhost:3333/`
+
+## To run the integration tests
+
+```zsh
+docker-compose -f docker-compose.yml -f docker-compose.test.yml up --build
+```

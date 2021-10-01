@@ -15,3 +15,5 @@ const port = process.env.EXPRESS_PORT
 app.listen(port || 5000, () => {
     console.log(`server has started on port ${port}`);
 });
+
+module.exports = app;
