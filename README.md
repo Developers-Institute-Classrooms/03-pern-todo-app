@@ -7,6 +7,7 @@ There is an associated tutorial [here](https://www.youtube.com/watch?v=ldYcgPKEZ
 ## Tutorials
 
 We followed along these tutorials to update the app:
+
 1. [Running the code](https://www.loom.com/share/0cd5a64678ab4f658d0349ed525d938f) (21 minutes)
 2. [Add npm start and nodemon](https://www.loom.com/share/969312b303aa4ac6b065405db66bcb7a) (4 minutes)
 3. [Keep routes in their own modules](https://www.loom.com/share/1600efbc5e104ce9b721111c3cebfdb6) (8 minutes)
@@ -31,5 +32,5 @@ The app will be running on `http://localhost:3333/`
 ## To run the integration tests
 
 ```zsh
-docker-compose -f docker-compose.yml -f docker-compose.test.yml up --build
+docker-compose -f docker-compose.test.yml up --build
 ```

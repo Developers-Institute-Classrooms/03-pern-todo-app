@@ -1,24 +1,25 @@
-version: '3'
+version: "3"
 services:
   supertest:
-    image: server
-    environment: 
+    build:
+      context: ./server
+    environment:
       - PGDATABASE=postgres
-      - PGHOST=test_db 
+      - PGHOST=test_db
       - PGUSER=postgres
       - PGPASSWORD=password
       - PGPORT=5432
       - NODE_ENV=test
-    depends_on: 
-      - server
-    volumes: 
+    depends_on:
+      - test_db
+    volumes:
       - ./server:/app
       - /app/node_modules
-    entrypoint: ['npm', 'test']
-  test_db: 
-    build: 
+    entrypoint: ["npm", "test"]
+  test_db:
+    build:
       context: ./db
-    volumes: 
+    volumes:
       - test-todo-volume:/var/lib/postgresql/data
 volumes:
   test-todo-volume:
